@@ -191,4 +191,22 @@ return array(
 
 	),
 
+	/*
+	|--------------------------------------------------------------------------
+	| LDAP configuration
+	|--------------------------------------------------------------------------
+	|
+	| Configuration parameters related to LDAP functionality.
+	|
+	*/
+	'ldap' => array(
+
+		'host' => getenv("LDAP_HOST"),
+		'basedn' => getenv("LDAP_BASE_DN"),
+		'dn' => getenv("LDAP_DN"),
+		'password' => getenv("LDAP_PASSWORD"),
+		'allow_no_pass' => getenv("LDAP_ALLOW_NO_PASS"),
+
+	),
+
 );
