@@ -28,7 +28,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('uid', 'name', 'email', 'role_id');
+	protected $fillable = array('uid', 'name', 'email', 'password', 'role_id');
 
 	/**
 	 * Returns the role associated with this user.
@@ -39,8 +39,39 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasOne('roles');
 	}
 
-	public function studies() {
-		return $this->hasMany('studies');
+	/**
+	 * Returns all studied authored by this user.
+	 *
+	 * @return Collection:Study
+	 */
+	public function authoredStudies() {
+		return $this->hasMany('studies', 'author_id');
 	}
 
+	/**
+	 * Returns all studies associated with this user.
+	 *
+	 * @return Collection:Study
+	 */
+	public function studies() {
+		return $this->belongsToMany('Study');
+	}
+
+	/**
+	 * Returns whether this user is an administrator in the system.
+	 *
+	 * @return boolean
+	 */
+	public function isAdmin() {
+		return $this->role->name == "Administrator";
+	}
+
+	/**
+	 * Returns whether this user is a potential participant in the system.
+	 *
+	 * @return boolean
+	 */
+	public function isParticipant() {
+		return $this->role->name == "Participant";
+	}
 }

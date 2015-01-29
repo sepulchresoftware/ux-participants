@@ -22,7 +22,16 @@ class Study extends Eloquent {
 	 * @return User
 	 */
 	public function author() {
-		return $this->hasOne('users', 'user_id', 'author_id');
+		return $this->belongsTo('users', 'author_id');
+	}
+
+	/**
+	 * Returns the set of all potential participants in the study.
+	 *
+	 * @return Collection:User
+	 */
+	public function participants() {
+		return $this->belongsToMany('User');
 	}
 
 }
