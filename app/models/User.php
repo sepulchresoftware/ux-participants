@@ -21,7 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('remember_token');
+	protected $hidden = array('password', 'remember_token');
 
 	/**
 	 * The attributes that can be auto-filled.
