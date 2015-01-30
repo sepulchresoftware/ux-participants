@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/*
+ Authentication controller handles these routes:
+ - /auth
+ - /auth/login
+ - /auth/logout
+ */
+Route::controller('/auth', 'AuthController');
+
+// default route for the landing screen
+Route::get('/', 'HomeController@getIndex');
