@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('partials.header')
+<head>
+	<title>UX Participants{{ !empty($title) ? " - $title" : "" }}</title>
+</head>
+<body>
+	<header>
+		@include('partials.header')
+	</header>
 
-@yield('content')
+	@yield('content')
 
-@include('partials.footer')
+	<footer>
+		@include('partials.footer')
+	</footer>
+</body>
 </html>

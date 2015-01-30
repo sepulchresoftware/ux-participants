@@ -1,5 +1,5 @@
-<header>
+<!-- Begin Header -->
 
 @include('partials.nav')
 
-</header>
+<!-- End Header -->

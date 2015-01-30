@@ -1,2 +1,3 @@
-<footer>
-</footer>
+<!-- Begin Footer -->
+
+<!-- End Footer -->
