@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>UX Participants{{ !empty($title) ? " - $title" : "" }}</title>
+	<title>UX Participants - @yield('title', 'Home')</title>
 </head>
 <body>
 	<header>

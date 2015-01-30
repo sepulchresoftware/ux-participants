@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Not Found
+@stop
+
 @section('content')
 
 <h1>Not Found</h1>
