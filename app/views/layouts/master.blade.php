@@ -1,1 +1,5 @@
-Big ol' master template.
+@include('partials.header')
+
+@yield('content')
+
+@include('partials.footer')

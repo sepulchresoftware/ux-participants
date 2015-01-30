@@ -21,3 +21,8 @@ Route::controller('/auth', 'AuthController');
 
 // default route for the landing screen
 Route::get('/', 'HomeController@getIndex');
+
+// define the catch-all for 404 pages
+App::missing(function($exception) {
+	return ErrorController::get404($exception);
+});
