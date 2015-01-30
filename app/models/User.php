@@ -40,7 +40,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	/**
-	 * Returns all studied authored by this user.
+	 * Returns all studies authored by this user.
 	 *
 	 * @return Collection:Study
 	 */
