@@ -1,1 +1,2 @@
-Footer partial.
+<footer>
+</footer>

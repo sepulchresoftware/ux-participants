@@ -1,3 +1,5 @@
-Header partial.
+<header>
 
 @include('partials.nav')
+
+</header>
