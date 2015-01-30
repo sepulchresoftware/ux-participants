@@ -16,4 +16,22 @@ class Role extends Eloquent {
 	 */
 	protected $fillable = array('name');
 
+	/**
+	 * Returns whether this role is the administrator role.
+	 *
+	 * @return boolean
+	 */
+	public function isAdmin() {
+		return $this->name == "Administrator";
+	}
+
+	/**
+	 * Returns whether this role is the participant role.
+	 *
+	 * @return boolean
+	 */
+	public function isParticipant() {
+		return $this->name == "Participant";
+	}
+
 }

@@ -63,7 +63,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @return boolean
 	 */
 	public function isAdmin() {
-		return $this->role->name == "Administrator";
+		return $this->role->isAdmin();
 	}
 
 	/**
@@ -72,6 +72,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @return boolean
 	 */
 	public function isParticipant() {
-		return $this->role->name == "Participant";
+		return $this->role->isParticipant();
 	}
 }
