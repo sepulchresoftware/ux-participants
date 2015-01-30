@@ -15,6 +15,7 @@ This system was written with LAMP, WAMP, and MAMP in mind.
 Below are the basic requirements for installation of this system:
 
 - LAMP, MAMP, or WAMP installed
+- PHP version 5.4+ should work fine but the system was developed on 5.5.18
 - Composer (https://getcomposer.org)
 - Apache mod_rewrite enabled
 - PHP LDAP module (http://php.net/manual/en/book.ldap.php)
