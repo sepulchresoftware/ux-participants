@@ -17,6 +17,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $table = 'users';
 
 	/**
+	 * The primary key used by the model.
+	 *
+	 * @var string
+	 */
+	protected $primaryKey = 'id';
+
+	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
@@ -28,7 +35,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('uid', 'name', 'email', 'password', 'role_id');
+	protected $fillable = array('uid', 'name', 'email', 'role_id');
 
 	/**
 	 * Returns the role associated with this user.
@@ -36,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @return Role
 	 */
 	public function role() {
-		return $this->hasOne('roles');
+		return $this->belongsTo('Role');
 	}
 
 	/**
@@ -45,7 +52,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @return Collection:Study
 	 */
 	public function authoredStudies() {
-		return $this->hasMany('studies', 'author_id');
+		return $this->hasMany('Study', 'author_id');
 	}
 
 	/**

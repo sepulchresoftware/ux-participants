@@ -2,3 +2,13 @@
 .navbar {
 	border-radius:0;
 }
+
+/* Basic top margin */
+.margin-top-10 {
+	margin-top:10px;
+}
+
+/* Kill left padding */
+.no-left-pad {
+	padding-left:0;
+}

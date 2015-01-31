@@ -122,6 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		// custom auth service provider
+		'METALab\Auth\AuthServiceProvider',
+
 	),
 
 	/*

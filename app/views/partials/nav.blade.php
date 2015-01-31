@@ -36,7 +36,7 @@
 				</ul>
 			</li>
 			@else
-			<li><a href="{{ url('auth/login') }}">Login</a></li>
+			<li><a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}">Login</a></li>
 			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
