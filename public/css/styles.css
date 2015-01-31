@@ -1,0 +1,4 @@
+/* Override styles for the BS navbar */
+.navbar {
+	border-radius:0;
+}
