@@ -28,6 +28,11 @@ Route::controller('/admin', 'AdminController');
 // default route for the landing screen
 Route::get('/', 'HomeController@getIndex');
 
+// define the global ModelNotFoundException handler
+App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+	return ErrorController::make404($exception);
+});
+
 // define the catch-all for 404 pages
 App::missing(function($exception) {
 	return ErrorController::make404($exception);
