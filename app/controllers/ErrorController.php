@@ -18,7 +18,7 @@ class ErrorController extends BaseController {
 	 * @return Response
 	 */
 	public static function make401($exception=null) {
-		return Response::make(View::make('pages.errors.401'), 401);
+		return Response::make(View::make('pages.errors.401')->with('active_nav', ""), 401);
 	}
 
 	/**
@@ -28,6 +28,6 @@ class ErrorController extends BaseController {
 	 * @return Response
 	 */
 	public static function make404($exception) {
-		return Response::make(View::make('pages.errors.404'), 404);
+		return Response::make(View::make('pages.errors.404')->with('active_nav', ""), 404);
 	}
 }
