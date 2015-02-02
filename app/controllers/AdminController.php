@@ -8,10 +8,8 @@ class AdminController extends BaseController {
 	 * Constructs a new AdminController object.
 	 */
 	public function __construct() {
-		$this->beforeFilter('auth');
-		if(!Auth::user()->isAdmin()) {
-			return Redirect::to('/');
-		}
+		// ensure the user is authenticated and an admin
+		$this->beforeFilter('auth.admin');
 	}
 
 	/*

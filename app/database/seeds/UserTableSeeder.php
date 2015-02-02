@@ -17,7 +17,16 @@ class UserTableSeeder extends Seeder {
 			'name' => 'Admin I. Strator',
 			'email' => 'admin@example.com',
 			'role_id' => 1,
-			'password' => sha1('password'),
+			'password' => sha1('admin'),
+		));
+
+		// default participant user
+		User::create(array(
+			'uid' => 'participant',
+			'name' => 'Partic I. Pant',
+			'email' => 'participant@example.com',
+			'role_id' => 2,
+			'password' => sha1('participant'),
 		));
 	}
 

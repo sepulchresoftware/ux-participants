@@ -54,6 +54,18 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+// filter to make sure the authenticated user is an administrator; if the user
+// has not been authenticated it will re-direct to the login screen
+Route::filter('auth.admin', function() {
+	if(Auth::check()) {
+		if(!Auth::user()->isAdmin()) {
+			return ErrorController::make401();
+		}
+	}
+
+	return Redirect::guest('login');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

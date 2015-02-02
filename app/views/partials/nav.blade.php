@@ -16,7 +16,7 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			@if (Auth::check())
-			<li><a href="#">Studies</a></li>
+			<li><a href="{{ url('studies') }}">Studies</a></li>
 			@endif
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -28,8 +28,8 @@
 					<li><a href="{{ url('admin') }}">Admin Panel</a></li>
 					<li role="presentation" class="divider"></li>
 					@endif
-					<li><a href="#">My Studies</a></li>
-					<li><a href="#">My Profile</a></li>
+					<li><a href="{{ url('user/' . Auth::user()->id . '/studies') }}">My Studies</a></li>
+					<li><a href="{{ url('user/' . Auth::user()->id) }}">My Profile</a></li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="{{ url('auth/logout') }}">Logout</a></li>
 				</ul>
