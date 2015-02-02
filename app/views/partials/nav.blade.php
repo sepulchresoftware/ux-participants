@@ -16,26 +16,28 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			@if (Auth::check())
-			<li><a href="{{ url('studies') }}">Studies</a></li>
+			<li><a href="{{ url('studies') }}"><i class="fa fa-book"></i> Studies</a></li>
 			@endif
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			@if (Auth::check())
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{{ Auth::user()->name }}} <b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-user"></i> {{{ Auth::user()->name }}} <b class="caret"></b>
+				</a>
 				<ul class="dropdown-menu">
 					@if (Auth::user()->isAdmin())
-					<li><a href="{{ url('admin') }}">Admin Panel</a></li>
+					<li><a href="{{ url('admin') }}"><i class="fa fa-wrench"></i> Admin Panel</a></li>
 					<li role="presentation" class="divider"></li>
 					@endif
-					<li><a href="{{ url('user/' . Auth::user()->id . '/studies') }}">My Studies</a></li>
-					<li><a href="{{ url('user/' . Auth::user()->id) }}">My Profile</a></li>
+					<li><a href="{{ url('user/' . Auth::user()->id . '/studies') }}"><i class="fa fa-folder"></i> My Studies</a></li>
+					<li><a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a></li>
 					<li role="presentation" class="divider"></li>
-					<li><a href="{{ url('auth/logout') }}">Logout</a></li>
+					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-arrow-left"></i> Logout</a></li>
 				</ul>
 			</li>
 			@else
-			<li><a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}">Login</a></li>
+			<li><a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}"><i class="fa fa-key"></i> Login</a></li>
 			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
