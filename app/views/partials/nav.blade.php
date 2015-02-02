@@ -15,7 +15,6 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
-			<li><a href="{{ url('/') }}">Home</a></li>
 
 			@if (Auth::check())
 			<li><a href="#">Studies</a></li>
