@@ -68,4 +68,15 @@ return array(
 
 	),
 
+	/*
+    |--------------------------------------------------------------------------
+    | Authentication Fallback Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Defines whether to fall-back to database authentication should the primary
+    | method of authentication fail.
+    |
+    */
+    'auth_fallback' => getenv("AUTH_FALLBACK"),
+
 );
