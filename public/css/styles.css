@@ -3,6 +3,14 @@
 	border-radius:0;
 }
 
+/* Change the "active" navbar item */
+.navbar .nav > .active > a
+{	
+   /* CSS trick to disable link-click redirect on WebKit browsers */
+   pointer-events:none;
+   cursor:default;
+}
+
 /* Basic top margin */
 .margin-top-10 {
 	margin-top:10px;
