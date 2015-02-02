@@ -1,16 +1,6 @@
 <?php
 
-use Illuminate\Support\MessageBag;
-
 class AdminController extends BaseController {
-
-	/**
-	 * Constructs a new AdminController object.
-	 */
-	public function __construct() {
-		// ensure the user is authenticated and an admin
-		$this->beforeFilter('auth.admin');
-	}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -22,7 +12,17 @@ class AdminController extends BaseController {
 	*/
 
 	/**
-	 * Performs a re-direct to the administration screen.
+	 * Constructs a new AdminController object.
+	 */
+	public function __construct() {
+		parent::__construct();
+		
+		// ensure the user is authenticated and an admin
+		$this->beforeFilter('auth.admin');
+	}
+
+	/**
+	 * Renders and returns the admin landing page.
 	 *
 	 * @return Redirect
 	 */

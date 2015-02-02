@@ -15,6 +15,13 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	/**
+	 * Constructs a new HomeController object.
+	 */
+	public function __construct() {
+		parent::__construct('home');
+	}
+
 	public function getIndex() {
 		return View::make('pages.landing.index');
 	}

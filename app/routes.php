@@ -25,6 +25,9 @@ Route::controller('/auth', 'AuthController');
  */
 Route::controller('/admin', 'AdminController');
 
+// resource for studies and associated actions
+Route::resource('/studies', 'StudyController');
+
 // default route for the landing screen
 Route::get('/', 'HomeController@getIndex');
 

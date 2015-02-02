@@ -14,6 +14,13 @@ class AuthController extends BaseController {
 	*/
 
 	/**
+	 * Constructs a new AuthController.
+	 */
+	public function __construct() {
+		parent::__construct('login');
+	}
+
+	/**
 	 * Performs a re-direct to the login screen.
 	 *
 	 * @return Redirect

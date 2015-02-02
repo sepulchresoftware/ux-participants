@@ -15,8 +15,13 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
+			<li @if ($active_nav == "home") class="active" @endif>
+				<a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
+			</li>
 			@if (Auth::check())
-			<li><a href="{{ url('studies') }}"><i class="fa fa-book"></i> Studies</a></li>
+			<li @if ($active_nav == "studies") class="active" @endif>
+				<a href="{{ url('studies') }}"><i class="fa fa-book"></i> Studies</a>
+			</li>
 			@endif
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -27,17 +32,25 @@
 				</a>
 				<ul class="dropdown-menu">
 					@if (Auth::user()->isAdmin())
-					<li><a href="{{ url('admin') }}"><i class="fa fa-wrench"></i> Admin Panel</a></li>
+					<li @if ($active_nav == "admin") class="active" @endif>
+						<a href="{{ url('admin') }}"><i class="fa fa-wrench"></i> Admin Panel</a>
+					</li>
 					<li role="presentation" class="divider"></li>
 					@endif
-					<li><a href="{{ url('user/' . Auth::user()->id . '/studies') }}"><i class="fa fa-folder"></i> My Studies</a></li>
-					<li><a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a></li>
+					<li @if ($active_nav == "my-studies") class="active" @endif>
+						<a href="{{ url('user/' . Auth::user()->id . '/studies') }}"><i class="fa fa-folder"></i> My Studies</a>
+					</li>
+					<li @if ($active_nav == "my-profile") class="active" @endif>
+						<a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a>
+					</li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-arrow-left"></i> Logout</a></li>
 				</ul>
 			</li>
 			@else
-			<li><a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}"><i class="fa fa-key"></i> Login</a></li>
+			<li @if ($active_nav == "login") class="active" @endif>
+				<a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}"><i class="fa fa-key"></i> Login</a>
+			</li>
 			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
