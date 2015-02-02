@@ -19,6 +19,12 @@
  */
 Route::controller('/auth', 'AuthController');
 
+/*
+ Administration controller handles these routes:
+ - /admin
+ */
+Route::controller('/admin', 'AdminController');
+
 // default route for the landing screen
 Route::get('/', 'HomeController@getIndex');
 

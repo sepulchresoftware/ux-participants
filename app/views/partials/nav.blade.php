@@ -25,7 +25,8 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{{ Auth::user()->name }}} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					@if (Auth::user()->isAdmin())
-					<li><a href="#">Admin Panel</a></li>
+					<li><a href="{{ url('admin') }}">Admin Panel</a></li>
+					<li role="presentation" class="divider"></li>
 					@endif
 					<li><a href="#">My Studies</a></li>
 					<li><a href="#">My Profile</a></li>
