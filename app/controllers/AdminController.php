@@ -9,6 +9,9 @@ class AdminController extends BaseController {
 	 */
 	public function __construct() {
 		$this->beforeFilter('auth');
+		if(!Auth::user()->isAdmin()) {
+			return Redirect::to('/');
+		}
 	}
 
 	/*
