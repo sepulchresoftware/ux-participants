@@ -59,11 +59,21 @@ class UserProviderLDAP implements UserProviderInterface
 	    			'role_id' => 2
 	    		));
 	    	}
+	    	else
+	    	{
+	    		// try the fallback since the creds failed on LDAP
+	    		return User::findByCreds($credentials);
+	    	}
     	}
     	catch(Exception $e)
     	{
     		// LDAP connection failure
     		return null;
+    	}
+
+    	// try the fallback method since LDAP failed completely
+    	if(Config::get('auth.auth_fallback')) {
+    		return User::findByCreds($credentials);
     	}
 
     	// invalid login attempt
