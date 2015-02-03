@@ -31,9 +31,12 @@ Route::resource('/studies', 'StudyController');
 // default route for the landing screen
 Route::get('/', 'HomeController@getIndex');
 
-// define the global ModelNotFoundException handler
-App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
-	return ErrorController::make404($exception);
+// define the global exception handler
+App::error(function($exception) {
+	if($exception instanceof ModelNotFoundException ||
+		$exception instanceof BadMethodCallException) {
+		return ErrorController::make404($exception);
+	}
 });
 
 // define the catch-all for 404 pages
