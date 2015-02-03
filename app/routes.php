@@ -33,7 +33,7 @@ Route::get('/', 'HomeController@getIndex');
 
 // define the global exception handler
 App::error(function($exception) {
-	if($exception instanceof ModelNotFoundException ||
+	if($exception instanceof Illuminate\Database\Eloquent\ModelNotFoundException ||
 		$exception instanceof BadMethodCallException) {
 		return ErrorController::make404($exception);
 	}

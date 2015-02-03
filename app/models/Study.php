@@ -14,7 +14,7 @@ class Study extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('name', 'active', 'author_id');
+	protected $fillable = array('name', 'description', 'active', 'author_id');
 
 	/**
 	 * Retrieve the author who created the study.

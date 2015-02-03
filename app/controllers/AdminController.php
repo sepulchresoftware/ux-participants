@@ -24,7 +24,7 @@ class AdminController extends BaseController {
 	/**
 	 * Renders and returns the admin landing page.
 	 *
-	 * @return Redirect
+	 * @return View
 	 */
 	public function getIndex() {
 		return View::make('pages.admin.index');

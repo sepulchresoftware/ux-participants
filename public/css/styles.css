@@ -1,3 +1,12 @@
+/* Space out the rows in the BS container */
+.container > .row {
+	margin-top:20px;
+}
+
+.container > .row:first-child {
+	margin-top:0px;
+}
+
 /* Override styles for the BS navbar */
 .navbar {
 	border-radius:0;

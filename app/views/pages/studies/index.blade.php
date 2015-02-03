@@ -6,10 +6,33 @@ Available Studies
 
 @section('content')
 
-<div class="row">
+@if (Auth::user()->isAdmin())
+	<div class="row">
+		<a href="{{ url('studies/create') }}" class="btn btn-primary pull-right">
+			<i class="fa fa-plus"></i> Create New Study
+		</a>
+	</div>
+@endif
 
-	<p>Let's get some studies going!</p>
+@if ($studies->count() == 0)
+	<div class="row">
+		<p>There are no studies currently available for participation.</p>
+	</div>
+@else
+	<div class="row">
+		<p>Below are all studies currently available for participation:</p>
+	</div>
+	@foreach ($studies as $study)
+	<div class="row">
+		<h3>
+			<a href="{{ url('studies/' . $study->id) }}">{{{ $study->name }}}</a>
+		</h3>
 
-</div>
+		@if (!empty($study->description))
+			<p>{{ nl2br(e($study->description)) }}</p>
+		@endif
+	</div>
+	@endforeach
+@endif
 
 @stop
