@@ -21,7 +21,7 @@ class StudyController extends BaseController {
 
 		// ensure the user is authenticated or an admin for certain operations
 		$this->beforeFilter('auth.admin', array(
-			'on' => ['create', 'store', 'edit', 'update', 'delete', 'destroy']
+			'except' => ['index']
 		));
 		$this->beforeFilter('auth');
 	}
