@@ -44,7 +44,7 @@
 						<a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a>
 					</li>
 					<li role="presentation" class="divider"></li>
-					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-arrow-left"></i> Logout</a></li>
+					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-unlock"></i> Logout</a></li>
 				</ul>
 			</li>
 			@else

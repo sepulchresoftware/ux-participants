@@ -26,6 +26,7 @@ Route::controller('/auth', 'AuthController');
 Route::controller('/admin', 'AdminController');
 
 // resource for studies and associated actions
+Route::get('/studies/{id}/delete', 'StudyController@delete');
 Route::resource('/studies', 'StudyController');
 
 // default route for the landing screen

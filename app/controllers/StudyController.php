@@ -88,4 +88,80 @@ class StudyController extends BaseController {
 		$study = Study::where('id', '=', $id)->firstOrFail();
 		return View::make('pages.studies.show', compact('study'));
 	}
+
+	/**
+	 * Displays an edit screen for the study with the specified ID.
+	 *
+	 * @param integer $id The ID of the study to edit
+	 * @return View
+	 */
+	public function edit($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+		return View::make('pages.studies.edit', compact('study'));
+	}
+
+	/**
+	 * Handles the submission and modification of an existing study.
+	 *
+	 * @param integer $id The ID of the study to update
+	 * @return View
+	 */
+	public function update($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+
+		$validator = Validator::make(
+			$input = [
+				'name'        => Input::get('name'),
+				'description' => Input::get('description')
+			],
+			$rules = [
+				'name'        => 'required'
+			]
+		);
+
+		// if the validator failed go back to the input screen
+		if($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		// the input passed validation so we can perform the DB operation
+		$study->fill($input);
+		$study->save();
+		$study->touch();
+
+		// show the success message and the confirmation screen
+		$success = "Successfully updated study named <strong>" . e($input['name']) . "</strong>.";
+		return View::make('pages.studies.edit', compact('success', 'study'));
+	}
+
+	/**
+	 * Handles the display of the delete confirmation screen.
+	 *
+	 * @param integer $id The ID of the study for which to confirm deletion
+	 * @return View
+	 */
+	public function delete($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+		return View::make('pages.studies.destroy', compact('study'));
+	}
+
+	/**
+	 * Handles the deletion operation for the specified study ID.
+	 *
+	 * @param integer $id The ID of the study to delete
+	 * @return View
+	 */
+	public function destroy($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+
+		// delete all participants for this study
+		$study->participants()->detach();
+
+		// now delete the study
+		$study->delete();
+
+		// show the success message and the confirmation screen
+		$success = "Successfully deleted study named <strong>" . e($study->name) . "</strong>.";
+		return View::make('pages.studies.destroy', compact('success'));
+	}
 }
