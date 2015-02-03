@@ -15,7 +15,7 @@ class AdminController extends BaseController {
 	 * Constructs a new AdminController object.
 	 */
 	public function __construct() {
-		parent::__construct();
+		parent::__construct('admin');
 		
 		// ensure the user is authenticated and an admin
 		$this->beforeFilter('auth.admin');
