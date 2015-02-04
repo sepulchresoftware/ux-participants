@@ -21,7 +21,7 @@
 				<i class="fa fa-lock"></i> Lock Study
 			</a></li>
 			@else
-			<li><a href="{{ url('studies/' . $study->id . '/unlock') }}" class="btn btn-info">
+			<li><a href="{{ url('studies/' . $study->id . '/unlock') }}" class="btn btn-warning">
 				<i class="fa fa-unlock"></i> Unlock Study
 			</a></li>
 			@endif
@@ -37,7 +37,7 @@
 <h4>Status</h4>
 <p>
 @if (!$study->locked)
-This study is available for participation. <strong><a href="{{ url('studies/' . $study->id . '/calendar') }}">Sign Up Now</a></strong>.
+This study is available for participation. <strong><a href="{{ url('studies/calendars/' . $study->id) }}">Sign up now</a></strong>.
 @else
 This study is <strong>locked</strong> and no longer available for participation.
 @endif

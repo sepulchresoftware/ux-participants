@@ -39,7 +39,7 @@ Available Studies
 	<div class="row">
 		<hr />
 		<h2>Locked Studies</h2>
-		<p>All studies below have been <strong>locked</strong> and are not accepting participants:</p>
+		<p>All studies below have been <strong>locked</strong> and are not accepting new participants:</p>
 	</div>
 	@foreach ($lockedStudies as $lockedStudy)
 	<div class="row">

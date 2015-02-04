@@ -22,6 +22,11 @@
 			<li @if ($active_nav == "studies") class="active" @endif>
 				<a href="{{ url('studies') }}"><i class="fa fa-book"></i> Studies</a>
 			</li>
+				@if (Auth::user()->isAdmin())
+					<li @if ($active_nav == "calendars") class="active" @endif>
+						<a href="{{ url('studies/calendars') }}"><i class="fa fa-calendar"></i> Calendars</a>
+					</li>
+				@endif
 			@endif
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

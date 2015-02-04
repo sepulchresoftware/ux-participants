@@ -25,6 +25,9 @@ Route::controller('/auth', 'AuthController');
  */
 Route::controller('/admin', 'AdminController');
 
+// resource for calendars related to studies
+Route::resource('/studies/calendars', 'CalendarController');
+
 // resource for studies and associated actions
 Route::get('/studies/{id}/delete', 'StudyController@delete');
 Route::get('/studies/{id}/lock', 'StudyController@lock');

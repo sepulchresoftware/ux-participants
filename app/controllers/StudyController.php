@@ -72,7 +72,6 @@ class StudyController extends BaseController {
 		$study->fill($input);
 		$study->author_id = Auth::user()->id;
 		$study->save();
-		$study->touch();
 
 		// show the success message and redirect back
 		$success = "Successfully created study named <strong>" . e($input['name']) . "</strong>.";
@@ -128,7 +127,6 @@ class StudyController extends BaseController {
 		// the input passed validation so we can perform the DB operation
 		$study->fill($input);
 		$study->save();
-		$study->touch();
 
 		// show the success message and the confirmation screen
 		$success = "Successfully updated study named <strong>" . e($input['name']) . "</strong>.";
