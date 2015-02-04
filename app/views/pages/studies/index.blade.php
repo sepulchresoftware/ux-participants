@@ -35,4 +35,25 @@ Available Studies
 	@endforeach
 @endif
 
+@if($lockedStudies->count() > 0)
+	<div class="row">
+		<hr />
+		<h2>Locked Studies</h2>
+		<p>All studies below have been <strong>locked</strong> and are not accepting participants:</p>
+	</div>
+	@foreach ($lockedStudies as $lockedStudy)
+	<div class="row">
+		<h3>
+			<a href="{{ url('studies/' . $lockedStudy->id) }}">
+				<i class="fa fa-lock"></i> {{{ $lockedStudy->name }}}
+			</a>
+		</h3>
+
+		@if (!empty($lockedStudy->description))
+			<p>{{ nl2br(e($lockedStudy->description)) }}</p>
+		@endif
+	</div>
+	@endforeach
+@endif
+
 @stop

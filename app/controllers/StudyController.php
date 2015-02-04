@@ -21,7 +21,7 @@ class StudyController extends BaseController {
 
 		// ensure the user is authenticated or an admin for certain operations
 		$this->beforeFilter('auth.admin', array(
-			'except' => ['index']
+			'except' => ['index', 'show']
 		));
 		$this->beforeFilter('auth');
 	}
@@ -32,8 +32,9 @@ class StudyController extends BaseController {
 	 * @return View
 	 */
 	public function index() {
-		$studies = Study::where('active', '=', '1')->orderBy('name', 'ASC')->get();
-		return View::make('pages.studies.index', compact('studies'));
+		$studies = Study::where('locked', '=', '0')->orderBy('name', 'ASC')->get();
+		$lockedStudies = Study::where('locked', '=', '1')->orderBy('name', 'ASC')->get();
+		return View::make('pages.studies.index', compact('studies', 'lockedStudies'));
 	}
 
 	/**
@@ -163,5 +164,41 @@ class StudyController extends BaseController {
 		// show the success message and the confirmation screen
 		$success = "Successfully deleted study named <strong>" . e($study->name) . "</strong>.";
 		return View::make('pages.studies.destroy', compact('success'));
+	}
+
+	/**
+	 * Locks a study to prevent sign-up functionality from running.
+	 *
+	 * @param integer $id The ID of the study to lock
+	 * @return View
+	 */
+	public function lock($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+
+		// lock the study
+		$study->locked = TRUE;
+		$study->save();
+
+		// show the success message
+		$success = "Successfully locked the study. No new sign-ups will be allowed.";
+		return View::make('pages.studies.show', compact('success','study'));
+	}
+
+	/**
+	 * Unlocks a study to allow sign-up functionality to run.
+	 *
+	 * @param integer $id The ID of the study to unlock
+	 * @return View
+	 */
+	public function unlock($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+
+		// unlock the study
+		$study->locked = FALSE;
+		$study->save();
+
+		// show the success message
+		$success = "Successfully unlocked the study. Sign-ups will be allowed.";
+		return View::make('pages.studies.show', compact('success','study'));
 	}
 }

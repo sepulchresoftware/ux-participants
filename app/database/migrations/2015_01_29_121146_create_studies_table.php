@@ -18,7 +18,7 @@ class CreateStudiesTable extends Migration {
 		    $table->increments('id');
 		    $table->text('name');
 		    $table->text('description');
-		    $table->boolean('active')->default(1);
+		    $table->boolean('locked')->default(0);
 		    $table->integer('author_id');
 		    $table->timestamps();
 		});

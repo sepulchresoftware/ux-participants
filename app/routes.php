@@ -27,6 +27,8 @@ Route::controller('/admin', 'AdminController');
 
 // resource for studies and associated actions
 Route::get('/studies/{id}/delete', 'StudyController@delete');
+Route::get('/studies/{id}/lock', 'StudyController@lock');
+Route::get('/studies/{id}/unlock', 'StudyController@unlock');
 Route::resource('/studies', 'StudyController');
 
 // default route for the landing screen
