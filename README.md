@@ -24,7 +24,6 @@ Below are the basic requirements for installation of this system:
 ##Installation Steps
 1. Run `composer install` in the directory you installed the project.
 2. Rename `env.example.php` to `env.php` and modify the config values to match your environment.
-3. Run `php artisan migrate` to run the DB migrations
-4. Run `php artisan db:seed` to seed the DB
-5. ???
-6. Profit
+3. Run `php artisan migrate --seed` to run the migrations and seed the DB
+4. ???
+5. Profit
