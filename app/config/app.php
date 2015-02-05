@@ -192,6 +192,12 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
+		// add alias for Carbon
+		'Carbon' => 'Carbon\Carbon',
+
+		// custom calendar functionality in the "handlers" directory
+		'Calendar' => 'HandlerCalendar',
+
 	),
 
 	/*

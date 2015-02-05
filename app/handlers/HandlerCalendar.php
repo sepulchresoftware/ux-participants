@@ -102,6 +102,24 @@ class HandlerCalendar
 	}
 
 	/**
+	 * Returns the name of the current day.
+	 *
+	 * @return string
+	 */
+	public function getCurrentDay() {
+		return $this->days[Carbon::now()->dayOfWeek];
+	}
+
+	/**
+	 * Returns the array matching the current month.
+	 *
+	 * @return array
+	 */
+	public function getCurrentMonth() {
+		return $this->months[Carbon::now()->month - 1];
+	}
+
+	/**
 	 * Returns the array containing names of days.
 	 *
 	 * @return array:string

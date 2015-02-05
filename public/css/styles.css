@@ -12,6 +12,10 @@
 	height:400px;
 }
 
+.calendar table th {
+	text-align:center;
+}
+
 /* Override styles for the BS navbar */
 .navbar {
 	border-radius:0;
