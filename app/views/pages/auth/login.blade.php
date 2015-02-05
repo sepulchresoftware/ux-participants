@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Login
+Sign In
 @stop
 
 @section('content')
@@ -21,7 +21,7 @@ Login
 		{{ Form::input('password','password', '', ['class' => 'form-control']) }}
 		</div>
 
-		{{ Form::submit('Login', ['class' => 'btn btn-primary'] )}}
+		{{ Form::submit('Sign In', ['class' => 'btn btn-primary'] )}}
 
 	{{ Form::close() }}
 	</div>

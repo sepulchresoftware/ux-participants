@@ -20,7 +20,7 @@ Calendars
 	@foreach ($studies as $study)
 	<div class="row">
 		<h3>
-			<a href="{{ url('studies/calendars/' . $study->id) }}">{{{ $study->name }}}</a>
+			<a href="{{ url('calendars/' . $study->id) }}">{{{ $study->name }}}</a>
 		</h3>
 
 		@if (!empty($study->description))
@@ -39,7 +39,7 @@ Calendars
 	@foreach ($lockedStudies as $lockedStudy)
 	<div class="row">
 		<h3>
-			<a href="{{ url('studies/calendars/' . $lockedStudy->id) }}">
+			<a href="{{ url('calendars/' . $lockedStudy->id) }}">
 				<i class="fa fa-lock"></i> {{{ $lockedStudy->name }}}
 			</a>
 		</h3>

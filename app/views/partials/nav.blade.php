@@ -24,7 +24,7 @@
 			</li>
 				@if (Auth::user()->isAdmin())
 					<li @if ($active_nav == "calendars") class="active" @endif>
-						<a href="{{ url('studies/calendars') }}"><i class="fa fa-calendar"></i> Calendars</a>
+						<a href="{{ url('calendars') }}"><i class="fa fa-calendar"></i> Calendars</a>
 					</li>
 				@endif
 			@endif
@@ -49,12 +49,12 @@
 						<a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a>
 					</li>
 					<li role="presentation" class="divider"></li>
-					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-unlock"></i> Logout</a></li>
+					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-unlock"></i> Sign Out</a></li>
 				</ul>
 			</li>
 			@else
 			<li @if ($active_nav == "login") class="active" @endif>
-				<a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}"><i class="fa fa-key"></i> Login</a>
+				<a href="{{ url('auth/login?return=' . urlencode(URL::full())) }}"><i class="fa fa-key"></i> Sign In</a>
 			</li>
 			@endif
 		</ul>
