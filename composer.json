@@ -6,8 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"tiesa/ldap": "dev-master",
-		"gloudemans/calendar": "dev-master"
+		"tiesa/ldap": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

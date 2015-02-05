@@ -125,9 +125,6 @@ return array(
 		// custom auth service provider
 		'METALab\Auth\AuthServiceProvider',
 
-		// calendar service provider
-		'Gloudemans\Calendar\CalendarServiceProvider',
-
 	),
 
 	/*
@@ -194,9 +191,6 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-
-		// calendar alias
-		'Calendar'          => 'Gloudemans\Calendar\Facades\Calendar',
 
 	),
 
