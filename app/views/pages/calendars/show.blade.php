@@ -24,4 +24,10 @@ Calendar View
 	<p>This is the calendar for <strong>{{{ $study->name }}}</strong>.</p>
 </div>
 
+<div class="row">
+	<div class="col-sm-offset-1 col-sm-10 calendar">
+		{{ $calendar }}
+	</div>
+</div>
+
 @stop

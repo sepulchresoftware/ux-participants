@@ -7,6 +7,11 @@
 	margin-top:0px;
 }
 
+.calendar table {
+	width:100%;
+	height:400px;
+}
+
 /* Override styles for the BS navbar */
 .navbar {
 	border-radius:0;
