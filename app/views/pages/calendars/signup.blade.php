@@ -33,30 +33,30 @@ Submit Availability
 		{{ Form::open() }}
 
 			<div class="form-group">
-				{{ Form::label('date-0', 'First Slot') }}
+				{{ Form::label('first-slot', 'First Slot') }}
 				<div class="input-group">
-					{{ Form::input('text', 'date-0', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
+					{{ Form::input('text', 'first-slot', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
-				<span id="date-0-help" class="help-block" aria-describedby="date-0">Example: 02/03/2015 02:15 PM</span>
+				<span id="first-slot-help" class="help-block" aria-describedby="first-slot">Example: 02/03/2015 02:15 PM</span>
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('date-1', 'Second Slot') }}
+				{{ Form::label('second-slot', 'Second Slot') }}
 				<div class="input-group">
-					{{ Form::input('text', 'date-1', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
+					{{ Form::input('text', 'second-slot', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
-				<span id="date-1-help" class="help-block" aria-describedby="date-1">Example: 02/04/2015 10:30 AM</span>
+				<span id="second-slot-help" class="help-block" aria-describedby="second-slot">Example: 02/04/2015 10:30 AM</span>
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('date-2', 'Third Slot') }}
+				{{ Form::label('third-slot', 'Third Slot') }}
 				<div class="input-group">
-					{{ Form::input('text', 'date-2', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
+					{{ Form::input('text', 'third-slot', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
-				<span id="date-2-help" class="help-block" aria-describedby="date-2">Example: 02/05/2015 03:45 PM</span>
+				<span id="third-slot-help" class="help-block" aria-describedby="third-slot">Example: 02/05/2015 03:45 PM</span>
 			</div>
 
 			{{ Form::submit('Submit Availability', ['class' => 'btn btn-primary'] )}}
@@ -71,7 +71,8 @@ Submit Availability
 			'sideBySide': true,
 			'daysOfWeekDisabled': [0, 6],
 			'format': 'MM/DD/YYYY hh:mm A',
-			'useCurrent': false
+			'useCurrent': false,
+			'stepping': 15
 		});
 	});
 </script>

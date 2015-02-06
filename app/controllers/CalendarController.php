@@ -65,4 +65,42 @@ class CalendarController extends BaseController {
 		$study = Study::where('id', '=', $id)->firstOrFail();
 		return View::make('pages.calendars.signup', compact('study'));
 	}
+
+	/**
+	 * Performs the signup operation on the specified calendar ID.
+	 *
+	 * @param integer $id The ID of the calendar to use for signups
+	 * @return View
+	 */
+	public function doSignup($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+
+		// perform the validation first
+		$validator = Validator::make(
+			$input = [
+				'first-slot' => Input::get('first-slot'),
+				'second-slot' => Input::get('second-slot'),
+				'third-slot' => Input::get('third-slot')
+			],
+			$rules = [
+				'first-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
+				'second-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
+				'third-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
+			]
+		);
+
+		// perform extra validation on the dates to ensure some semblance of sanity
+		/*$validator->after(function($validator) use $input {
+		    if ($this->somethingElseIsInvalid()) {
+		        $validator->errors()->add('field', 'Something is wrong with this field!');
+		    }
+		});*/
+
+		// bounce back if the validator failed
+		if($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		dd("FUCK YISSS");
+	}
 }
