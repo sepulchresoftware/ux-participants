@@ -75,32 +75,45 @@ class CalendarController extends BaseController {
 	public function doSignup($id) {
 		$study = Study::where('id', '=', $id)->firstOrFail();
 
-		// perform the validation first
-		$validator = Validator::make(
-			$input = [
-				'first-slot' => Input::get('first-slot'),
-				'second-slot' => Input::get('second-slot'),
-				'third-slot' => Input::get('third-slot')
-			],
-			$rules = [
-				'first-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
-				'second-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
-				'third-slot' => 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A"),
-			]
-		);
+		// make sure this study is not locked
+		if($study->locked) {
+			return Redirect::back();
+		}
 
-		// perform extra validation on the dates to ensure some semblance of sanity
-		/*$validator->after(function($validator) use $input {
-		    if ($this->somethingElseIsInvalid()) {
-		        $validator->errors()->add('field', 'Something is wrong with this field!');
-		    }
-		});*/
+		// set up the validation
+		$slots = ["first", "second", "third"];
+		$input = [];
+		$rules = [];
+		foreach($slots as $slot) {
+			$input["{$slot}-slot"] = Input::get("{$slot}-slot");
+			$rules["{$slot}-slot"] = 'date_format:m/d/Y g:i A|after:' . date("m/d/Y g:i A");
+		}
 
 		// bounce back if the validator failed
+		$validator = Validator::make($input, $rules);
 		if($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		dd("FUCK YISSS");
+		// iterate over the time slots and add the records to the DB as signups
+		$added = 0;
+		foreach($slots as $slot) {
+			if(!empty($input["{$slot}-slot"])) {
+				// add the availability to the pivot table
+				$study->participants()->attach($study->id, array(
+					'user_id' => Auth::user()->id,
+					'timestamp' => $input["{$slot}-slot"],
+					'confirmed' => FALSE,
+					'confirmed_on' => 0,
+					'confirmed_by' => 0,
+				));
+
+				$added++;
+			}
+		}
+
+		// show the success message
+		$success = "You have successfully submitted {$added} available time slot(s) for <strong>" . e($study->name) . "</strong>.";
+		return View::make('pages.calendars.signup', compact('study', 'success'));
 	}
 }

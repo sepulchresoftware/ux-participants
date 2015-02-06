@@ -20,6 +20,7 @@ Submit Availability
 	@endif
 </div>
 
+@if (empty($success))
 <div class="row">
 	<p>On this screen you may submit availability for <strong>{{{ $study->name }}}</strong>.</p>
 </div>
@@ -76,5 +77,6 @@ Submit Availability
 		});
 	});
 </script>
+@endif
 
 @stop
