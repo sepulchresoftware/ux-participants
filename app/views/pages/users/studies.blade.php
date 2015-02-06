@@ -27,9 +27,9 @@ My Studies
 					@foreach($studies as $study)
 						<tr>
 							<td><a href="{{ url('studies/' . $study->id) }}">{{{ $study->name }}}</a></td>
-							<td>{{{ $study->timestamp }}}</td>
+							<td>{{{ $study->pivot->timestamp }}}</td>
 							<td>
-								@if ($study->confirmed)
+								@if ($study->pivot->confirmed)
 									<span class="label label-primary">
 										<i class="fa fa-check"></i> Confirmed!
 									</span>

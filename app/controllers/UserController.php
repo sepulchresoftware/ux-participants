@@ -30,9 +30,8 @@ class UserController extends BaseController {
 	 * @return View
 	 */
 	public function studies($id) {
+		$this->updateActiveNavItem('my-studies');
 		$studies = User::find($id)->studies()->orderBy("name", "ASC")->get();
-
-		return $studies;
 
 		return View::make('pages.users.studies', compact('studies'));
 	}
