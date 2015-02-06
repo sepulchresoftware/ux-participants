@@ -43,10 +43,10 @@
 					<li role="presentation" class="divider"></li>
 					@endif
 					<li @if ($active_nav == "my-studies") class="active" @endif>
-						<a href="{{ url('user/' . Auth::user()->id . '/studies') }}"><i class="fa fa-folder"></i> My Studies</a>
+						<a href="{{ url('users/' . Auth::user()->id . '/studies') }}"><i class="fa fa-folder"></i> My Studies</a>
 					</li>
 					<li @if ($active_nav == "my-profile") class="active" @endif>
-						<a href="{{ url('user/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a>
+						<a href="{{ url('users/' . Auth::user()->id) }}"><i class="fa fa-info-circle"></i> My Profile</a>
 					</li>
 					<li role="presentation" class="divider"></li>
 					<li><a href="{{ url('auth/logout') }}"><i class="fa fa-unlock"></i> Sign Out</a></li>

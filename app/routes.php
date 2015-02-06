@@ -25,6 +25,9 @@ Route::controller('/auth', 'AuthController');
  */
 Route::controller('/admin', 'AdminController');
 
+// controller for user-related actions
+Route::get('/users/{id}/studies', 'UserController@studies');
+
 // resource for calendars related to studies
 Route::get('/calendars/{id}/signup', 'CalendarController@signup');
 Route::post('/calendars/{id}/signup', 'CalendarController@doSignup');
