@@ -38,6 +38,7 @@ Submit Availability
 					{{ Form::input('text', 'date-0', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
+				<span id="date-0-help" class="help-block" aria-describedby="date-0">Example: 02/03/2015 02:15 PM</span>
 			</div>
 
 			<div class="form-group">
@@ -46,6 +47,7 @@ Submit Availability
 					{{ Form::input('text', 'date-1', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
+				<span id="date-1-help" class="help-block" aria-describedby="date-1">Example: 02/04/2015 10:30 AM</span>
 			</div>
 
 			<div class="form-group">
@@ -54,6 +56,7 @@ Submit Availability
 					{{ Form::input('text', 'date-2', '', ['class' => 'form-control', 'placeholder' => 'MM/DD/YYYY hh:mm [AM|PM]']) }}
 					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
+				<span id="date-2-help" class="help-block" aria-describedby="date-2">Example: 02/05/2015 03:45 PM</span>
 			</div>
 
 			{{ Form::submit('Submit Availability', ['class' => 'btn btn-primary'] )}}
