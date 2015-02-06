@@ -30,6 +30,12 @@ class UserController extends BaseController {
 	 * @return View
 	 */
 	public function studies($id) {
+
+		// make sure the authenticated user is the same as the ID
+		if(Auth::user()->id != $id) {
+			return ErrorController::make401();
+		}
+
 		$this->updateActiveNavItem('my-studies');
 		$studies = User::find($id)->studies()->orderBy("name", "ASC")->get();
 
