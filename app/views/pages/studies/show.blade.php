@@ -37,7 +37,7 @@
 <h4>Status</h4>
 <p>
 @if (!$study->locked)
-This study is available for participation. <strong><a href="{{ url('calendars/' . $study->id) }}">Sign up now</a></strong>.
+This study is available for participation. <strong><a href="{{ url('calendars/' . $study->id . '/signup') }}">Sign up now</a></strong>.
 @else
 This study is <strong>locked</strong> and no longer available for participation.
 @endif

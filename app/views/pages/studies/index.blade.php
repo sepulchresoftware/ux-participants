@@ -35,7 +35,7 @@ Available Studies
 	@endforeach
 @endif
 
-@if($lockedStudies->count() > 0)
+@if($lockedStudies->count() > 0 && Auth::user()->isAdmin())
 	<div class="row">
 		<hr />
 		<h2>Locked Studies</h2>

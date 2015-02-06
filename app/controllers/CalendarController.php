@@ -21,7 +21,7 @@ class CalendarController extends BaseController {
 
 		// ensure the user is authenticated or an admin for certain operations
 		$this->beforeFilter('auth.admin', array(
-			'on' => ['index']
+			'except' => ['doSignup', 'signup']
 		));
 		$this->beforeFilter('auth');
 
@@ -53,5 +53,16 @@ class CalendarController extends BaseController {
 		$study = Study::where('id', '=', $id)->firstOrFail();
 		$calendar = new Calendar();
 		return View::make('pages.calendars.show', compact('study', 'calendar'));
+	}
+
+	/**
+	 * Renders and returns the view page for a calendar to specify availability.
+	 *
+	 * @return integer $id The ID of the calendar to use
+	 * @return View
+	 */
+	public function signup($id) {
+		$study = Study::where('id', '=', $id)->firstOrFail();
+		return View::make('pages.calendars.signup', compact('study'));
 	}
 }
