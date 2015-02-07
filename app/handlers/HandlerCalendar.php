@@ -130,6 +130,34 @@ class HandlerCalendar
 	}
 
 	/**
+	 * Renders and returns the markup to display the calendar.
+	 *
+	 * @return string
+	 */
+	public function render() {
+		$markup = <<<MARKUP
+			<table class="table">
+				<thead>
+					<tr>
+						<th colspan="7">{$this->getMonth()}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+MARKUP;
+
+		// display the set of days
+		foreach($this->getDays() as $day) {
+			$markup .= "<td>{$day}</td>";
+		}
+		$markup .= "</tr>";
+
+		// close the table and return the markup
+		$markup .= "</tbody></table>";
+		return $markup;
+	}
+
+	/**
 	 * Returns whether weekends are disabled on the calendar.
 	 *
 	 * @return boolean

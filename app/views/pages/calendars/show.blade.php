@@ -26,25 +26,7 @@ Calendar View
 
 <div class="row">
 	<div class="col-sm-offset-1 col-sm-10 calendar">
-		<table class="table">
-			<thead>
-				<tr>
-					<th colspan="7">{{{ $calendar->getMonth() }}}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="days">
-					@foreach($calendar->getDays() as $day)
-						<td>{{{ $day }}}</td>
-					@endforeach
-				</tr>
-				@for ($i = 0; $i < $calendar->getDaysInMonth(); $i++)
-					
-					
-
-				@endfor
-			</tbody>
-		</table>
+		{{ $calendar->render() }}
 	</div>
 </div>
 
