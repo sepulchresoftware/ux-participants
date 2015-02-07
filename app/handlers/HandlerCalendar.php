@@ -130,6 +130,15 @@ class HandlerCalendar
 	}
 
 	/**
+	 * Returns the index of the start day for the month.
+	 *
+	 * @return integer
+	 */
+	public function getStartDayOfMonthIndex() {
+		return $this->firstDay->dayOfWeek;
+	}
+
+	/**
 	 * Renders and returns the markup to display the calendar.
 	 *
 	 * @return string
@@ -151,6 +160,9 @@ MARKUP;
 			$markup .= "<td>{$day}</td>";
 		}
 		$markup .= "</tr>";
+
+		// iterate over the days and build the calendar
+		$startDay = $this->getStartDayOfMonthIndex();
 
 		// close the table and return the markup
 		$markup .= "</tbody></table>";
