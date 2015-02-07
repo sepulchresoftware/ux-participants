@@ -24,13 +24,12 @@ Calendar View
 	<p>This is the calendar for <strong>{{{ $study->name }}}</strong>.</p>
 </div>
 
-<!--
 <div class="row">
 	<div class="col-sm-offset-1 col-sm-10 calendar">
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="7">{{{ $calendar->getCurrentMonth()['name'] }}}</th>
+					<th colspan="7">{{{ $calendar->getMonth() }}}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,10 +38,14 @@ Calendar View
 						<td>{{{ $day }}}</td>
 					@endforeach
 				</tr>
+				@for ($i = 0; $i < $calendar->getDaysInMonth(); $i++)
+					
+					
+
+				@endfor
 			</tbody>
 		</table>
 	</div>
 </div>
--->
 
 @stop

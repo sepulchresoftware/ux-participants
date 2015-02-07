@@ -5,17 +5,40 @@
  */
 class HandlerCalendar
 {
+	private $carbon;
+	private $firstDay;
+
+	private $month;
 	private $months;
 
+	private $day;
 	private $days;
+
+	private $year;
 
 	private $disableWeekends;
 
 	/**
 	 * Constructs a new HandlerCalendar class.
+	 *
+	 * @param integer $month Optional month for the calendar
+	 * @param integer $day Optional day for the calendar
+	 * @param integer $year Optional year for the calendar
 	 */
-	public function __construct() {
+	public function __construct($month=null, $day=null, $year=null) {
 		$this->disableWeekends = true;
+
+		// construct a Carbon object based on the parameters
+		$month = (!empty($month) ? $month : date("m"));
+		$day = (!empty($day) ? $day : date("d"));
+		$year = (!empty($year) ? $year : date("Y"));
+		$this->carbon = new Carbon("{$month}/{$day}/{$year}");
+
+		// assign the values
+		$this->month = $month;
+		$this->day = $day;
+		$this->year = $year;
+		$this->firstDay = new Carbon("{$month}/01/{$year}");
 		
 		$this->days = array(
 			"Sunday",
@@ -28,67 +51,18 @@ class HandlerCalendar
 		);
 
 		$this->months = array(
-			array(
-				"name" => "January",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "February",
-				"days" => 28,
-				"leapdays" => 29,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "March",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "April",
-				"days" => 30,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "May",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "June",
-				"days" => 30,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "July",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "August",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "September",
-				"days" => 30,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "October",
-				"days" => 31,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "November",
-				"days" => 30,
-				"holidays" => array(),
-			),
-			array(
-				"name" => "December",
-				"days" => 31,
-				"holidays" => array(),
-			),
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"
 		);
 	}
 
@@ -102,21 +76,30 @@ class HandlerCalendar
 	}
 
 	/**
-	 * Returns the name of the current day.
+	 * Returns the name of the day.
 	 *
 	 * @return string
 	 */
-	public function getCurrentDay() {
-		return $this->days[Carbon::now()->dayOfWeek];
+	public function getDay() {
+		return $this->days[$this->carbon->dayOfWeek];
 	}
 
 	/**
-	 * Returns the array matching the current month.
+	 * Returns the number of days in the month.
+	 *
+	 * @return integer
+	 */
+	public function getDaysInMonth() {
+		return $this->carbon->daysInMonth;
+	}
+
+	/**
+	 * Returns the name of the month.
 	 *
 	 * @return array
 	 */
-	public function getCurrentMonth() {
-		return $this->months[Carbon::now()->month - 1];
+	public function getMonth() {
+		return $this->months[$this->carbon->month - 1];
 	}
 
 	/**
@@ -135,6 +118,15 @@ class HandlerCalendar
 	 */
 	public function getMonths() {
 		return $this->months;
+	}
+
+	/**
+	 * Returns the day on which the month started.
+	 *
+	 * @return string
+	 */
+	public function getStartDayOfMonth() {
+		return $this->days[$this->firstDay->dayOfWeek];
 	}
 
 	/**
