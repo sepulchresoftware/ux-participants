@@ -163,6 +163,26 @@ MARKUP;
 
 		// iterate over the days and build the calendar
 		$startDay = $this->getStartDayOfMonthIndex();
+		
+		// figure out the body of the calendar
+		for($i = 0; $i < $this->getDaysInMonth() + $startDay; $i++) {
+			// week rows start on the first day of the week
+			if($i % 7 == 0) {
+				$markup .= "<tr>";
+			}
+
+			// add the cell for the day
+			$markup .= "<td>";
+			if($i >= $startDay) {
+				$markup .= (($i - $startDay) + 1);
+			}
+			$markup .= "</td>";
+
+			// end the row if we know the next day will be the start of a new week
+			if(($i + 1) % 7 == 0) {
+				$markup .= "</tr>";
+			}
+		}
 
 		// close the table and return the markup
 		$markup .= "</tbody></table>";
