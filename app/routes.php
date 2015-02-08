@@ -27,6 +27,7 @@ Route::controller('/admin', 'AdminController');
 
 // controller for user-related actions
 Route::get('/users/{id}/studies', 'UserController@studies');
+Route::resource('/users', 'UserController');
 
 // resource for calendars related to studies
 Route::get('/calendars/{id}/slot/{slot}/clear', 'CalendarController@clearConfirm');

@@ -24,6 +24,26 @@ class UserController extends BaseController {
 	}
 
 	/**
+	 * Shows the profile page for the given user ID.
+	 *
+	 * @param integer $id The user ID for which to show the profile
+	 * @return Vuew
+	 */
+	public function show($id) {
+		// make sure the authenticated user is the same as the ID if the auth
+		// user is not an administrator
+		if(!Auth::user()->isAdmin()) {
+			if(Auth::user()->id != $id) {
+				return ErrorController::make401();
+			}
+		}
+
+		// grab the user by the ID
+		$user = User::where('id', '=', $id)->firstOrFail();
+		return View::make('pages.users.profile', compact('user'));
+	}
+
+	/**
 	 * Render and return all studies with the user ID as a participant.
 	 *
 	 * @param integer $id The user ID to use when searching
@@ -31,9 +51,12 @@ class UserController extends BaseController {
 	 */
 	public function studies($id) {
 
-		// make sure the authenticated user is the same as the ID
-		if(Auth::user()->id != $id) {
-			return ErrorController::make401();
+		// make sure the authenticated user is the same as the ID if the auth
+		// user is not an administrator
+		if(!Auth::user()->isAdmin()) {
+			if(Auth::user()->id != $id) {
+				return ErrorController::make401();
+			}
 		}
 
 		$this->updateActiveNavItem('my-studies');

@@ -37,9 +37,9 @@
 				</a>
 				<ul class="dropdown-menu">
 					@if (Auth::user()->isAdmin())
-					<li @if ($active_nav == "admin") class="active" @endif>
+					<!--<li @if ($active_nav == "admin") class="active" @endif>
 						<a href="{{ url('admin') }}"><i class="fa fa-wrench"></i> Admin Panel</a>
-					</li>
+					</li>-->
 					<li role="presentation" class="divider"></li>
 					@endif
 					<li @if ($active_nav == "my-studies") class="active" @endif>
