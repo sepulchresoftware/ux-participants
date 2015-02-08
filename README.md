@@ -31,3 +31,18 @@ Below are the basic requirements for installation of this system:
 3. Run `php artisan migrate --seed` to run the migrations and seed the DB
 4. ???
 5. Profit
+
+##Change Log
+
+###1.0.0
+
+- Implemented authentication and authorization
+- LDAP auth as primary method with local DB auth as backup
+- Participant full list of studies
+- Participant submission of available time slots per study
+- Participant view of all associated studies
+- Participant profile view
+- Admin creation of studies to allow participation
+- Admin editing, deletion, locking, and unlocking of existing studies
+- Admin view all available and confirmed time slots per study on a basic calendar
+- Admin confirm participant time slots per study
