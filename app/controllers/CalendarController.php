@@ -51,8 +51,9 @@ class CalendarController extends BaseController {
 	 */
 	public function show($id) {
 		$study = Study::where('id', '=', $id)->firstOrFail();
-		$calendar = new Calendar();
-		return View::make('pages.calendars.show', compact('study', 'calendar'));
+		return $study->participants;
+		/*$calendar = new Calendar();
+		return View::make('pages.calendars.show', compact('study', 'calendar'));*/
 	}
 
 	/**

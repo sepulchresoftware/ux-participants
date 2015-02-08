@@ -31,7 +31,7 @@ class Study extends Eloquent {
 	 * @return Collection:User
 	 */
 	public function participants() {
-		return $this->belongsToMany('User');
+		return $this->belongsToMany('User')->withPivot('timestamp', 'confirmed');
 	}
 
 }
