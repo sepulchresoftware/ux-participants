@@ -73,6 +73,20 @@ class CalendarController extends BaseController {
 	}
 
 	/**
+	 * Renders and returns the view for all participants on a specific calendar.
+	 *
+	 * @return integer $id The ID fo the calendar to use
+	 * @return View
+	 */
+	public function participants($id) {
+		$study = Study::with('participants')->where('id', '=', $id)->firstOrFail();
+		$month = (Input::has('month') ? Input::get('month') : date("m"));
+		$year = (Input::has('year') ? Input::get('year') : date("Y"));
+
+		return View::make('pages.calendars.participants', compact('study', 'month', 'year'));
+	}
+
+	/**
 	 * Renders and returns the view page for a calendar to specify availability.
 	 *
 	 * @return integer $id The ID of the calendar to use

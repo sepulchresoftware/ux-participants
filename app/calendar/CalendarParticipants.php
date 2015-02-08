@@ -14,6 +14,9 @@ class CalendarParticipants extends AbstractCalendar
 		$confirmed = 0;
 		$markup = "";
 
+		$participantsLink = url('calendars/' . $this->study->id . '/participants') .
+			"?month=" . $this->carbon->month . "&year=" . $this->carbon->year;
+
 		// ensure we are operating on a cell ID that isn't a spacer
 		if($cellId >= $startDay) {
 			// figure out how many participants are available or confirmed
@@ -39,7 +42,7 @@ class CalendarParticipants extends AbstractCalendar
 			if($available > 0) {
 				$markup .= <<<AVAILABLE
 					<br />
-					<a href='#'>
+					<a href='{$participantsLink}'>
 						<span class='label label-default'>
 							$available Available
 						</span>
@@ -51,7 +54,7 @@ AVAILABLE;
 			if($confirmed > 0) {
 				$markup .= <<<CONFIRMED
 					<br />
-					<a href='#'>
+					<a href='{$participantsLink}'>
 						<span class='label label-primary'>
 							<i class='fa fa-check'></i> $confirmed Confirmed
 						</span>

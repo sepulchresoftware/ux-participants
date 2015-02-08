@@ -15,7 +15,7 @@ Calendars
 @if ($studies->count() > 0)
 	<div class="row">
 		<h2>Active Calendars</h2>
-		<p>Below are all calendars currently accepting sign-ups:</p>
+		<p>Below are all calendars currently accepting new participants:</p>
 	</div>
 	@foreach ($studies as $study)
 	<div class="row">
@@ -34,7 +34,7 @@ Calendars
 	<div class="row">
 		<hr />
 		<h2>Locked Calendars</h2>
-		<p>All study calendars below have been <strong>locked</strong> and are not new accepting sign-ups:</p>
+		<p>All study calendars below have been <strong>locked</strong> and are not new accepting participants:</p>
 	</div>
 	@foreach ($lockedStudies as $lockedStudy)
 	<div class="row">
