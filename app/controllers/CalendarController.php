@@ -27,8 +27,10 @@ class CalendarController extends BaseController {
 
 		// if the logged-in user is an administrator, activate the Calendars item
 		// in the navigation bar instead
-		if(Auth::user()->isAdmin()) {
-			$this->updateActiveNavItem('calendars');
+		if(Auth::check()) {
+			if(Auth::user()->isAdmin()) {
+				$this->updateActiveNavItem('calendars');
+			}
 		}
 	}
 
@@ -52,8 +54,20 @@ class CalendarController extends BaseController {
 	public function show($id) {
 		$study = Study::with('participants')->where('id', '=', $id)->firstOrFail();
 
+		// ensure we are rendering the proper calendar
+		if(Input::has('month') && Input::has('year')) {
+			$calendar = new CalendarParticipants(
+				Input::get('month'),
+				1,
+				Input::get('year')
+			);
+		}
+		else
+		{
+			$calendar = new CalendarParticipants();
+		}
+
 		// create the participants calendar with the specified study
-		$calendar = new CalendarParticipants();
 		$calendar->setStudy($study);
 		return View::make('pages.calendars.show', compact('study', 'calendar'));
 	}

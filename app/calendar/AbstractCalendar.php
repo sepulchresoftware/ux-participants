@@ -139,16 +139,41 @@ abstract class AbstractCalendar
 	}
 
 	/**
+	 * Returns the year represented by this calendar.
+	 *
+	 * @return integer
+	 */
+	public function getYear() {
+		return $this->carbon->year;
+	}
+
+	/**
 	 * Renders and returns the markup to display the calendar.
 	 *
 	 * @return string
 	 */
 	public function render() {
+		$prevMonth = $this->carbon->copy()->subMonth();
+		$nextMonth = $this->carbon->copy()->addMonth();
+
+		// generate the previous and next links
+		$prevLink = "?month=" . $prevMonth->month . "&year=" . $prevMonth->year;
+		$prevName = $this->months[$prevMonth->month-1];
+		$nextLink = "?month=" . $nextMonth->month . "&year=" . $nextMonth->year;
+		$nextName = $this->months[$nextMonth->month-1];
+
 		$markup = <<<MARKUP
+			<div class="pull-left">
+				<a href="{$prevLink}" class="btn btn-default">&larr; $prevName {$prevMonth->year}</a>
+			</div>
+			<div class="pull-right">
+				<a href="{$nextLink}" class="btn btn-default">$nextName {$nextMonth->year} &rarr;</a>
+			</div>
+			<div>&nbsp;</div>
 			<table class="table">
 				<thead>
 					<tr>
-						<th colspan="7">{$this->getMonth()}</th>
+						<th colspan="7">{$this->getMonth()} {$this->getYear()}</th>
 					</tr>
 				</thead>
 				<tbody>
