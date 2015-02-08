@@ -195,9 +195,6 @@ return array(
 		// add alias for Carbon
 		'Carbon' => 'Carbon\Carbon',
 
-		// custom calendar functionality in the "handlers" directory
-		'Calendar' => 'HandlerCalendar',
-
 	),
 
 	/*

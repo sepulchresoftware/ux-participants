@@ -1,7 +1,6 @@
 /* The main table in the calendar container */
 .calendar table {
 	width:100%;
-	height:500px;
 }
 
 /* The table header */
@@ -9,7 +8,12 @@
 	text-align:center;
 }
 
-/* The first row of the calendar listing the days */
+/* The first row of the calendar listing the day names */
 .calendar table tbody tr:first-child td {
 	height:32px;
+}
+
+/* All calendar rows representing days of the month */
+.calendar table tbody tr td {
+	height:100px;
 }

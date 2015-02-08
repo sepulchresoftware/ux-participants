@@ -10,6 +10,7 @@
 	},
 	"autoload": {
 		"classmap": [
+			"app/calendar",
 			"app/commands",
 			"app/controllers",
 			"app/handlers",

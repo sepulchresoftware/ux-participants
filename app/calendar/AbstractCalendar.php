@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Handler class for Calendar operations.
+ * Abstract class that handles common calendar functionality.
  */
-class HandlerCalendar
+abstract class AbstractCalendar
 {
-	private $carbon;
-	private $firstDay;
+	protected $carbon;
+	protected $firstDay;
 
-	private $month;
-	private $months;
+	protected $month;
+	protected $months;
 
-	private $day;
-	private $days;
+	protected $day;
+	protected $days;
 
-	private $year;
+	protected $year;
 
-	private $disableWeekends;
+	protected $disableWeekends;
 
 	/**
 	 * Constructs a new HandlerCalendar class.
@@ -171,12 +171,8 @@ MARKUP;
 				$markup .= "<tr>";
 			}
 
-			// add the cell for the day
-			$markup .= "<td>";
-			if($i >= $startDay) {
-				$markup .= (($i - $startDay) + 1);
-			}
-			$markup .= "</td>";
+			// render the cell for the specific day
+			$markup .= "<td>" . $this->renderCellContent($i, $startDay) . "</td>";
 
 			// end the row if we know the next day will be the start of a new week
 			if(($i + 1) % 7 == 0) {
@@ -188,6 +184,16 @@ MARKUP;
 		$markup .= "</tbody></table>";
 		return $markup;
 	}
+
+	/**
+	 * Renders the content of the cell with the given ID. Also supplied is the
+	 * start day index of the month represented in the calendar. Returns the
+	 * markup needed to render the cell without the <td> tag.
+	 *
+	 * @param integer $cellId The ID of the cell to render
+	 * @param integer $startDay The index of the month's start day
+	 */
+	protected abstract function renderCellContent($cellId, $startDay);
 
 	/**
 	 * Returns whether weekends are disabled on the calendar.
