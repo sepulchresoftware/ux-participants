@@ -3,6 +3,10 @@ A simple Laravel system for managing potential participants in a UX study.
 
 **This system is a WIP; clone at your own risk**
 
+##Releases
+
+- [UX Participants 1.0.0 (February 8, 2015)](https://github.com/SepulchreSoftware-Matt/participants/releases/tag/v1.0.0)
+
 ##Installation Requirements
 This system was written with LAMP, WAMP, and MAMP in mind.
 
