@@ -29,6 +29,8 @@ Route::controller('/admin', 'AdminController');
 Route::get('/users/{id}/studies', 'UserController@studies');
 
 // resource for calendars related to studies
+Route::get('/calendars/{id}/slot/{slot}/clear', 'CalendarController@clearConfirm');
+Route::get('/calendars/{id}/slot/{slot}/confirm', 'CalendarController@confirm');
 Route::get('/calendars/{id}/participants', 'CalendarController@participants');
 Route::get('/calendars/{id}/signup', 'CalendarController@signup');
 Route::post('/calendars/{id}/signup', 'CalendarController@doSignup');

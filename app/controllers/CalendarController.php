@@ -73,6 +73,46 @@ class CalendarController extends BaseController {
 	}
 
 	/**
+	 * Clears confirmation on the time slot ID for the given calendar ID.
+	 *
+	 * @param integer $id The calendar ID to use
+	 * @param integer $slot The time slot ID to use
+	 *
+	 * @return View
+	 */
+	public function clearConfirm($id, $slot) {
+		$month = (Input::has('month') ? Input::get('month') : date("m"));
+		$year = (Input::has('year') ? Input::get('year') : date("Y"));
+
+		// do a raw DB update to set confirmation status
+		DB::table('study_user')->where('id', '=', $slot)->update(['confirmed' => 0]);
+		$success = "Successfully cleared confirmation status on the time slot.";
+
+		$study = Study::with('participants')->where('id', '=', $id)->firstOrFail();
+		return View::make('pages.calendars.participants', compact('study', 'success', 'month', 'year'));
+	}
+
+	/**
+	 * Confirms the time slot ID for the given calendar ID.
+	 *
+	 * @param integer $id The calendar ID to use
+	 * @param integer $slot The time slot ID to use
+	 *
+	 * @return View
+	 */
+	public function confirm($id, $slot) {
+		$month = (Input::has('month') ? Input::get('month') : date("m"));
+		$year = (Input::has('year') ? Input::get('year') : date("Y"));
+
+		// do a raw DB update to set confirmation status
+		DB::table('study_user')->where('id', '=', $slot)->update(['confirmed' => 1]);
+		$success = "Successfully confirmed the time slot.";
+
+		$study = Study::with('participants')->where('id', '=', $id)->firstOrFail();
+		return View::make('pages.calendars.participants', compact('study', 'success', 'month', 'year'));
+	}
+
+	/**
 	 * Renders and returns the view for all participants on a specific calendar.
 	 *
 	 * @return integer $id The ID fo the calendar to use
